@@ -1,8 +1,9 @@
 const glob = require('glob');
 const fs = require('fs');
 const converter = require('json2csv');
-const { promisify } = require('util');
+const formatData = require('./converter');
 
+// Seperate file
 function conversion(data, convert = converter) {
 
 }
@@ -13,10 +14,10 @@ function getFiles(name, fileSys = fs) {
     const storage = [];
 
     for(let i = 0; i < name.length; i+=1) {
-       console.log(`${getFiles.prototype.name} - Parsing file: ${name[i]}`);
+       console.log(`[Parser]::getFiles - Getting data from ${name[i]}`);
        const data = readFileSync(name[i], { encoding: "utf8", flag: "r" });
        if (!data) {
-        console.log(`${getFiles.prototype.name} - No info found`);
+        console.log(`[Parser]::getFiles - No info found`);
         return;
        }
        storage.push(data);
@@ -29,10 +30,16 @@ let testNames = glob("*.feature", {
     sync: true
 });
 
+let parsedData = [];
 try {
-    getFiles(testNames);
+    const rawData = getFiles(testNames);
+    for (let i = 0; i <= rawData.length -1; i+=1) {
+        const result = formatData(rawData[i]);
+        console.log(result);
+        parsedData.push(result);
+    }
 } catch (e) {
-    console.log(e);
+    console.log(`[Parser]:Error Found -`, e);
 }
-// const output = async (names) => names ?  : 'no files';
-// output(testNames);
+
+console.log(parsedData);
