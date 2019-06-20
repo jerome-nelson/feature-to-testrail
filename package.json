@@ -1,0 +1,10 @@
+{
+  "name": "testrail-converter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "glob": "^7.1.4",
+    "json2csv": "^4.5.1"
+  }
+}
