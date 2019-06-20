@@ -5,12 +5,14 @@
   "license": "MIT",
   "dependencies": {
     "glob": "^7.1.4",
-    "json2csv": "^4.5.1"
+    "json2csv": "^4.5.1",
+    "yargs": "^13.2.4"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
   },
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon -e js",
+    "test-dev": "nodemon __tests__/test.js"
   }
 }

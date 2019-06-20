@@ -1,45 +1,28 @@
-const glob = require('glob');
-const fs = require('fs');
-const converter = require('json2csv');
-const formatData = require('./converter');
-
-// Seperate file
-function conversion(data, convert = converter) {
-
-}
-
-// Read and combine data
-function getFiles(name, fileSys = fs) {
-    const { readFileSync } = fileSys;
-    const storage = [];
-
-    for(let i = 0; i < name.length; i+=1) {
-       console.log(`[Parser]::getFiles - Getting data from ${name[i]}`);
-       const data = readFileSync(name[i], { encoding: "utf8", flag: "r" });
-       if (!data) {
-        console.log(`[Parser]::getFiles - No info found`);
-        return;
-       }
-       storage.push(data);
-    }
-    return storage;
-}
-
-let testNames = glob("*.feature", {
-    nonull: false,
-    sync: true
-});
-
-let parsedData = [];
-try {
-    const rawData = getFiles(testNames);
-    for (let i = 0; i <= rawData.length -1; i+=1) {
-        const result = formatData(rawData[i]);
-        console.log(result);
-        parsedData.push(result);
-    }
-} catch (e) {
-    console.log(`[Parser]:Error Found -`, e);
-}
-
-console.log(parsedData);
+#!/usr/bin/env node
+require('yargs')
+  .command(
+      'convert [file]', 
+    'Either a specific filename `test.feature` or a Glob string `*.feature` to capture more than one file', 
+    (yargs) => {
+    yargs
+      .positional('file', {
+        describe: 'filename or file glob to specify',
+        default: ''
+      })
+  }, (argv) => {
+    // if (argv.verbose) console.info(`start server on :${argv.port}`)
+    require('./lib/parser.js')(argv.file, { output: argv.output, debug: argv.debug });
+  })
+  .option('debug', {
+      alias: 'd',
+      default: false
+  })
+  .option('verbose', {
+    alias: 'v',
+    default: false
+  })
+  .option('output', {
+    alias: 'o',
+    default: ''
+  })
+  .argv
