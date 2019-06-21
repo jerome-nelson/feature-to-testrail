@@ -10,11 +10,14 @@ require('yargs')
         default: ''
       })
   }, (argv) => {
-    // if (argv.verbose) console.info(`start server on :${argv.port}`)
-    require('./lib/parser.js')(argv.file, { output: argv.output, debug: argv.debug });
+    require('../lib/parser.js')(argv.file, { output: argv.output, debug: argv.debug, dryrun: argv.dry });
+  })
+  .option('dry', {
+    alias: 'd',
+    default: false
   })
   .option('debug', {
-      alias: 'd',
+      alias: 'D',
       default: false
   })
   .option('verbose', {
