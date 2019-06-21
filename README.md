@@ -30,3 +30,4 @@ $ gherkintocsv *.feature -o testrail.csv -d true
 * Convert console.log to logging factory and exceptions
 * Write mock test cases - for previous functions
 * Prevent Invalid Commands
+* Addition of conventional commits for commit linting
