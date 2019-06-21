@@ -1,8 +1,14 @@
 {
   "name": "testrail-converter",
   "version": "1.0.0",
-  "main": "index.js",
+  "author": {
+    "name": "Jerome D. Nelson",
+    "email": "jerome.nelson@betssongroup.com"
+  },
   "license": "MIT",
+  "bin": {
+    "gherkintocsv": "./bin/gherkintocsv.js"
+  },
   "dependencies": {
     "glob": "^7.1.4",
     "json2csv": "^4.5.1",
