@@ -27,6 +27,8 @@ $ gherkintocsv *.feature -o testrail.csv -d true
 - `dry | -d`: Can be used for testing
 
 ### TODO
+* Examine PoC and replace with suitable structure to meet requirements
 * Convert console.log to logging factory and exceptions
 * Write mock test cases - for previous functions
 * Prevent Invalid Commands
+* Addition of conventional commits for commit linting
