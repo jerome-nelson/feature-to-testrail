@@ -1,7 +1,8 @@
+## Project Abandoned
 Quick Node Tool to Convert *.feature files to .csv
 ===================================================
 
-Specifically used to convert *.feature files from [https://bitbucketsson.betsson.local/projects/TEA/repos/testautomation/browse](TestAutomation).
+Specifically used to convert *.feature files from Test Automation files within Betsson
 
 Tested against CasinoCommon `*.feature` files.
 
